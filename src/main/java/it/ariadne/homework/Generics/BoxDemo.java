@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class BoxDemo {
 
-	  public static <U> void addBox(U u, 
+	  public static <U extends Number> void addBox(U u, 
 	      List<Box<U>> boxes) {
 	    Box<U> box = new Box<>();
 	    box.set(u);
 	    boxes.add(box);
 	  }
 
-	  public static <U> void outputBoxes(List<Box<U>> boxes) {
+	  public static <U extends Number> void outputBoxes(List<Box<U>> boxes) {
 	    int counter = 0;
 	    for (Box<U> box: boxes) {
 	      U boxContents = box.get();
@@ -26,12 +26,12 @@ public class BoxDemo {
 	      new ArrayList<>();
 	    BoxDemo.addBox(Integer.valueOf(10), listOfIntegerBoxes);
 	    BoxDemo.addBox(Double.valueOf(20.1), listOfIntegerBoxes);
-	    BoxDemo.addBox(Float.valueOf(30.2f), listOfIntegerBoxes);
+	    BoxDemo.addBox(Float.valueOf(30.25215f), listOfIntegerBoxes);
 	    BoxDemo.outputBoxes(listOfIntegerBoxes);
 	  }
 	}
 
-class Box<T> {
+class Box<T extends Number> {
     // T stands for "Type"
     private T t;
 
